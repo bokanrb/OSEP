@@ -3,7 +3,10 @@
     <Platform Name="Any CPU" />
     <Platform Name="x64" />
   </Configurations>
-  <Project Path="Hollow/Hollow.csproj">
+  <Project Path="Hollow/Hollow.csproj" Id="daddbfb9-21d4-4e7a-a1fb-5c4152f78d13">
     <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="HollowSyscal/HollowSyscal.csproj" Id="bf0a331a-e674-44e6-954a-7a63878a9017">
+    <Platform Solution="Release|x64" Project="x64" />
   </Project>
 </Solution>
