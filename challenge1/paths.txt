@@ -1,4 +1,0 @@
-c:\
-"C:\Program Files"
-c:\setup
-C:\Windows\Installer
