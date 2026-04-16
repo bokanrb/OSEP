@@ -1,0 +1,10 @@
+GET /loginform.asp?uname=123&psw=123 HTTP/1.1
+Host: 192.168.153.140
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Referer: http://192.168.153.140/login.asp
+Accept-Encoding: gzip, deflate, br
+Cookie: ASPSESSIONIDAQQTSBAC=MBCJFIODOOGMBMIEAMDILLIF
+Connection: keep-alive

