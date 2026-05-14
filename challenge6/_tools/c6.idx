@@ -1,0 +1,73 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>
+	Home Page - Final Application
+</title><script src="/Final/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+<link href="/Final/Content/css?v=A0fr47wLxxEi8IdBDE6RhcTaIXAzKJMzF4b3mdglsPc1" rel="stylesheet"/>
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" /></head>
+<body>
+    <form method="post" action="./" id="ctl01" enctype="multipart/form-data">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="ckzrOIHpNigAG1ppDsQJ3CkHa/aECOo/6pGQSUsJVWcLS4SYiSfFvJSCpeelmoaXIgbOgmiDtMOPpJSdriFofLNTTr4eMdJR9KjAgG5UysaISeCQ95P8jskEknOyzR/Sijd/uUTYWkm9kGYu4ngdOw==" />
+
+
+<script src="/Final/bundles/MsAjaxJs?v=D6VN0fHlwFSIWjbVzi6mZyE9Ls-4LNrSSYVGRU46XF81" type="text/javascript"></script>
+<script src="Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="/Final/bundles/WebFormsJs?v=N8tymL9KraMLGAMFuPycfH3pXe6uUlRXdhtYv8A_jUU1" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F2837A35" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="AdsKmuE2JgZizf4XoVrS+mzIt7CXOfGChjXMWJzk3p0qOUAK/DKcmze9UmujMQhA6yWg5z5ckh4RIXWo2xJoo7LWBLNtvt1WfjWlCmjL4KTHR3Qj3tLq0V5o9dZjq1vA" />
+        
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="./" class="navbar-brand">Final Application</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./">Home</a></li>
+                        <li><a href="About">About</a></li>
+                        <li><a href="Contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            
+
+    <div class="jumbotron">
+        <h1>Cyber Final CMS editor</h1>
+        <p class="lead">This website is used to upload CMS layouts</p>
+    </div>
+
+	<div class="jumbotron">
+        <h3>Please upload the CMS template</h3>
+		<p>File&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="file" name="ctl00$MainContent$FileUploadControl" id="MainContent_FileUploadControl" />
+		</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" name="ctl00$MainContent$UploadButton" value="Upload" id="MainContent_UploadButton" />
+		</p>
+		<p>
+			<span id="MainContent_StatusLabel"></span>
+		</p>
+    </div>
+
+
+            <hr />
+            <footer>
+                <p>&copy; 2026 - Final Application</p>
+            </footer>
+        </div>
+
+    </form>
+</body>
+</html>
